@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# From: https://gist.github.com/n0ts/40dd9bd45578556f93e7 with suggested corrections
+# From: https://gist.github.com/n0ts/40dd9bd45578556f93e7
 
 # You must accept the Oracle Binary Code License
 # http://www.oracle.com/technetwork/java/javase/terms/license/index.html
@@ -27,9 +27,14 @@ readonly jdk_download_url4=$(
     egrep -o "http\:\/\/download.oracle\.com\/otn-pub\/java\/jdk\/[8-9](u[0-9]+|\+|[.0-9]+\+).*\/jdk-${jdk_version}.*(-|_)linux-(x64|x64_bin).$ext"
 )
 
-for dl_url in ${jdk_download_url4[@]}; do
-    wget --no-cookies \
-         --no-check-certificate \
-         --header "Cookie: oraclelicense=accept-securebackup-cookie" \
-         -N $dl_url
-done
+# Fetch the newest one
+jdks=($jdk_download_url4)
+wget -q --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" -N ${jdks[-1]}
+
+#for dl_url in ${jdk_download_url4[@]}; do
+#    wget --no-cookies \
+#         --no-check-certificate \
+#         --header "Cookie: oraclelicense=accept-securebackup-cookie" \
+#         -N $dl_url
+#          echo $dl_url
+#done

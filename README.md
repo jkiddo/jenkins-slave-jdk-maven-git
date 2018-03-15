@@ -4,8 +4,7 @@
 
 Jenkins slave based on evarga/jenkins-slave image with:
 
-- oracle jdk 1.8.0_101
-- maven 3.3.9
-- git 1.9.1 installed.
-
-Note: symlinks /opt/jdk/latest and /usr/local/apache-maven exist and point to respective folders.
+- latest oracle jdk 1.8
+- latest oracle jdk 1.9
+- maven 3.5.3
+- git and curl installed.
